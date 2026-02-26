@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>lizandkass4ever.biz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,900&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --cream: #fdf6ec;
+      --blush: #f2c4c4;
+      --rose: #c4607a;
+      --deep: #1a0a10;
+      --gold: #d4a853;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      background-color: var(--deep);
+      color: var(--cream);
+      font-family: 'DM Serif Display', serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      overflow: hidden;
+      cursor: default;
+    }
+
+    /* Noise texture overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 10;
+      opacity: 0.4;
+    }
+
+    /* Radial glow background */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: 
+        radial-gradient(ellipse 80% 60% at 50% 50%, rgba(194, 96, 122, 0.18) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 20% 80%, rgba(212, 168, 83, 0.08) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .container {
+      position: relative;
+      z-index: 5;
+      text-align: center;
+      padding: 3rem 2rem;
+      max-width: 800px;
+    }
+
+    /* Decorative top ornament */
+    .ornament {
+      font-size: 1rem;
+      letter-spacing: 0.4em;
+      color: var(--gold);
+      opacity: 0;
+      text-transform: uppercase;
+      animation: fadeSlideUp 0.8s ease forwards 0.2s;
+      margin-bottom: 2rem;
+      display: block;
+    }
+
+    .ornament span {
+      display: inline-block;
+      width: 3rem;
+      height: 1px;
+      background: var(--gold);
+      vertical-align: middle;
+      opacity: 0.6;
+      margin: 0 0.8rem;
+    }
+
+    .main-text {
+      opacity: 0;
+      animation: fadeSlideUp 1s ease forwards 0.5s;
+    }
+
+    .line-1 {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-weight: 900;
+      font-size: clamp(1.6rem, 5vw, 3.2rem);
+      color: var(--blush);
+      line-height: 1.15;
+      display: block;
+      margin-bottom: 0.4em;
+    }
+
+    .line-2 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: clamp(2.2rem, 7vw, 4.8rem);
+      color: var(--cream);
+      line-height: 1;
+      display: block;
+      margin-bottom: 0.6em;
+      text-shadow: 0 0 60px rgba(242, 196, 196, 0.2);
+      letter-spacing: -0.01em;
+    }
+
+    .line-3 {
+      font-family: 'DM Serif Display', serif;
+      font-style: italic;
+      font-size: clamp(1.3rem, 3.5vw, 2rem);
+      color: var(--gold);
+      display: block;
+      letter-spacing: 0.02em;
+    }
+
+    /* Bottom ornament */
+    .ornament-bottom {
+      margin-top: 2.5rem;
+      opacity: 0;
+      animation: fadeSlideUp 0.8s ease forwards 1.2s;
+    }
+
+    .hearts {
+      font-size: 1rem;
+      color: var(--rose);
+      letter-spacing: 0.6em;
+      display: block;
+    }
+
+    /* Subtle floating petals / sparkles */
+    .sparkle {
+      position: fixed;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--gold);
+      opacity: 0;
+      animation: float var(--dur, 8s) ease-in-out var(--delay, 0s) infinite;
+      z-index: 3;
+    }
+
+    @keyframes fadeSlideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes float {
+      0%   { opacity: 0; transform: translate(0, 0) scale(1); }
+      20%  { opacity: 0.6; }
+      80%  { opacity: 0.3; }
+      100% { opacity: 0; transform: translate(var(--tx, 20px), -120px) scale(0.3); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <span class="ornament"><span></span>liz & kass<span></span></span>
+
+    <div class="main-text">
+      <span class="line-1">I bet you didn't think this was going to be real,</span>
+      <span class="line-2">didn't you?</span>
+      <span class="line-1">Never forget I'm that bitch.</span>
+      <span class="line-3">I love you.</span>
+    </div>
+
+    <div class="ornament-bottom">
+      <span class="hearts">♡ &nbsp; ♡ &nbsp; ♡</span>
+    </div>
+  </div>
+
+  <script>
+    // Generate floating sparkles
+    const colors = ['#d4a853', '#f2c4c4', '#c4607a', '#fdf6ec'];
+    for (let i = 0; i < 18; i++) {
+      const el = document.createElement('div');
+      el.className = 'sparkle';
+      el.style.cssText = `
+        left: ${Math.random() * 100}vw;
+        top: ${60 + Math.random() * 40}vh;
+        --dur: ${6 + Math.random() * 8}s;
+        --delay: ${Math.random() * 8}s;
+        --tx: ${(Math.random() - 0.5) * 60}px;
+        background: ${colors[Math.floor(Math.random() * colors.length)]};
+        width: ${2 + Math.random() * 4}px;
+        height: ${2 + Math.random() * 4}px;
+      `;
+      document.body.appendChild(el);
+    }
+  </script>
+</body>
+</html>
